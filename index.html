@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List using Array</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Things You Plan To Do Today</h1>
+    <h4>Add Tasks</h4>
+
+    <form class="input_detail">
+        Enter Your Task:<input type="text" class="input_task" placeholder="Enter Task" >
+        Select Priority: <select class="priority">
+            <option>Select Task Priority</option>
+            <option value="High">High</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Low">Low</option>
+        </select>
+        <input type="submit" class="add_btn btn" value="Add">
+    </form>
+    <div class="error"></div>
+
+    <section class="filter_buttons">
+        <input type="submit" class="btn all_btn" value="All" data-filter="All">
+        <input type="submit" class="btn High" value="High" data-filter="High">
+        <input type="submit" class="btn Moderate" value="Moderate" data-filter="Moderate">
+        <input type="submit" class="btn Low" value="Low" data-filter="Low">
+        <input type="submit" class="btn Completed" value="Completed" data-filter="Completed">
+    </section>
+
+    <ul class="output_list">
+        <!-- <li class="li_decoration">
+            <div><span>coding</span><button class="output_btn">Done</button><button class="output_btn">Edit</button><button class="output_btn">Delete</button></div>
+        </li> -->
+    </ul>
+
+
+    <script src="index.js"></script>
+</body>
+</html>

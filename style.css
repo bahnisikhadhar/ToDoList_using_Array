@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 100%;
+    background-color: lightblue;
+}
+h1 {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: rgb(8, 143, 137);
+    color: white;
+    font-size: 2.3rem;
+}
+h4 {
+    text-align: center;
+    margin: 2rem;
+    font-size: 2rem;
+    color: rgb(113, 52, 169);
+}
+.input_detail {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    color: rgb(113, 52, 169);
+}
+.input_task, .priority {
+    width: 20%;
+    padding: .8rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+.priority {
+    width: 10%;
+}
+.filter_buttons {
+    margin: 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+ .High{
+        background-color:lightcoral;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+.Moderate {
+    background-color:yellow;
+        padding: 1rem;
+        border-radius: 10px;
+}
+.Low{
+    background-color:lightseagreen;
+        padding: 1rem;
+        border-radius: 10px;
+}
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color:rgb(5, 107, 102) ;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.btn:hover {
+    background-color: lightseagreen;
+    color: black;
+}
+.btn:active{
+    background-color: rgb(5, 107, 102);
+    color: white;
+}
+
+/************************************************CSS for J.S************************************************/
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+}
+
+.li_decoration {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    list-style: none;
+    /* background-color: rgb(17, 188, 179); */
+    width: 70%;
+    margin: 1rem auto;
+    /* border-radius: 10px; */
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: rgb(3, 72, 72);
+}
+span {
+    margin-right: 40rem;
+}
+.output_btn {
+    padding: .8rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    background-color:rgb(3, 95, 95) ;
+    color:white ;
+    font-weight: bold;
+    margin-right:1rem;
+}
+.output_btn:hover{
+    background-color:rgb(21, 154, 147) ;
+}
+.output_btn:active{
+   background-color:rgb(3, 95, 95) ; 
+}
+.display_none{
+    display: none;
+}
