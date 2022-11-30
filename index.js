@@ -5,11 +5,13 @@ const addButton=document.querySelector(".add_btn");
 const error=document.querySelector(".error");
 const filterButtons=document.querySelector(".filter_buttons");
 const outputList=document.querySelector(".output_list")
-let toDoArr=[];
+// let toDoArr=JSON.parse(localStorage.getItem("todo"))||[];
+toDoArr=[];
 let count=0;
 let completed=false;
 let listSpan;
 //----------------------------------------TO RESET INPUT AND ERROR FIELD---------------------------------
+
 function reset()
 {
    inputTask.value="";
@@ -17,17 +19,28 @@ function reset()
 }
 
 //-------------------------------CREATE LIST ELEMENT------------------------------------------------------------
+
 function createListElement(toDoObj)
 {
    const listEle=document.createElement("li");
    listEle.setAttribute("id",toDoObj.id);
    listEle.setAttribute("class","li_decoration");
    listEle.innerHTML= `<div class="${toDoObj.priority}"><span>${toDoObj.text}</span><button class="output_btn done">Done</button><button class="output_btn edit">Edit</button><button class="output_btn delete">Delete</button></div>`;
+   if(toDoObj.priority=="High")
+   listEle.classList.add("high");
+   else if(toDoObj.priority=="Moderate")
+   listEle.classList.add("moderate");
+   else if(toDoObj.priority=="Low")
+   listEle.classList.add("low")
+  
+  
    outputList.appendChild(listEle);
-
+   
 }
 
 //--------------------------------ADD TASK-OBJECT-ARRAY & SHOW ERROR MESSAGE-------------------------------------- 
+
+
 function addTask(event){
 event.preventDefault();
 if(event.target.value=="Save")
@@ -67,6 +80,7 @@ toDoArr.forEach((ele,index)=>{
       toDoArr.splice(index,1);
    }
 })
+
 }
 //-------------------------------------------TO EDIT--------------------------------------------------------------
 
@@ -81,19 +95,32 @@ function editList(event){
 function SaveUpdate(event,inputText,priority)
 {
    listSpan.textContent=inputText;
+   // console.log(priority)
+   // console.log(listSpan.parentElement.parentElement)
+   
+   // for update in priority,change background color
+   if(priority=="High")
+   listSpan.parentElement.parentElement.classList.add("high");
+   else if(priority=="Moderate")
+   listSpan.parentElement.parentElement.classList.add("moderate");
+   else if(priority=="Low")
+   listSpan.parentElement.parentElement.classList.add("low");
+
    addButton.value="Add";
+
 // update the array
 toDoArr.forEach((ele,index)=>{
    if(listSpan.parentNode.parentNode.id==ele.id){
-      console.log(ele)
       ele.text=inputText;
       ele.priority=priority;//if priority is also updated
-      console.log(priority)
+      console.log(ele)
    }
 })
+
 reset();
 }
 //--------------------------------------------FILTER TASK--------------------------------------------------------
+
 function filterTask(event)
 {
    console.log(event.target.dataset.filter)
@@ -107,10 +134,24 @@ function filterTask(event)
    temp.forEach(ele=>{
        createListElement(ele);
    })
-   console.log(outputList)
+   
+}
+// --------------------------------------------COMPLETED TASK--------------------------------------------------
+
+function completList(event){
+console.log(event.target.parentNode.firstElementChild);
+let a=event.target.parentNode.firstElementChild;
+a.classList.toggle("checked");
+toDoArr.forEach((ele)=>{
+   if(parseInt(event.path[2].id)==ele.id){
+      ele.completed=true;
+   }
+})
+console.log(toDoArr);
 
 }
 //---------------------------------------------------ADD EVENT LISTNERS-------------------------------------------
+
 addButton.addEventListener("click",addTask);
 
 outputList.addEventListener("click",(event)=>{
@@ -123,11 +164,11 @@ console.log(event)
    {
       editList(event);
    }
-   // else if(event.target.classList.contains("done"))
-   // {
-   //    completList(event);
-   // }
-   console.log(toDoArr)
+   else if(event.target.classList.contains("done"))
+   {
+      completList(event);
+   }
+   
 })
 
 filterButtons.addEventListener("click",(event)=>{

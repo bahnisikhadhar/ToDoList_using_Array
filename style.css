@@ -44,21 +44,6 @@ h4 {
     justify-content: center;
     gap: 1rem;
 }
- .High{
-        background-color:lightcoral;
-        padding: 1rem;
-        border-radius: 10px;
-    }
-.Moderate {
-    background-color:yellow;
-        padding: 1rem;
-        border-radius: 10px;
-}
-.Low{
-    background-color:lightseagreen;
-        padding: 1rem;
-        border-radius: 10px;
-}
 .btn {
     padding: 1rem 2rem;
     border: none;
@@ -92,10 +77,9 @@ h4 {
     align-items: center;
     padding: 1rem;
     list-style: none;
-    /* background-color: rgb(17, 188, 179); */
     width: 70%;
     margin: 1rem auto;
-    /* border-radius: 10px; */
+    border-radius: 10px;
     text-align: center;
     font-size: 1.3rem;
     font-weight: bold;
@@ -121,4 +105,17 @@ span {
 }
 .display_none{
     display: none;
+}
+.high{
+    background-color:lightcoral;
+}
+.moderate {
+background-color:yellow;
+}
+.low{
+background-color:lightseagreen;
+}
+.checked {
+    text-decoration: line-through;
+    text-decoration-color: white;
 }
