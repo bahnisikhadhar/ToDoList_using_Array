@@ -119,6 +119,22 @@ toDoArr.forEach((ele,index)=>{
 
 reset();
 }
+// --------------------------------------------COMPLETED TASK--------------------------------------------------
+
+function completList(event){
+   // console.log(event.target.parentNode.firstElementChild);
+   let a=event.target.parentNode.firstElementChild;
+   a.classList.toggle("checked");
+
+   toDoArr.forEach((ele)=>{
+    if(parseInt(event.path[2].id)==ele.id){
+        ele.text=event.path[1].firstChild.innerText;
+         ele.completed=true;
+      }
+   })
+   console.log(toDoArr);
+   
+   }
 //--------------------------------------------FILTER TASK--------------------------------------------------------
 
 function filterTask(event)
@@ -126,9 +142,15 @@ function filterTask(event)
    console.log(event.target.dataset.filter)
    outputList.innerHTML = "";
    let temp;
-   if(event.target.dataset.filter != "All"){
+   if(event.target.dataset.filter=="High" || event.target.dataset.filter=="Moderate" || event.target.dataset.filter=="Low"){
        temp = toDoArr.filter(elem => elem.priority == event.target.dataset.filter)
-   }else{
+   }else if(event.target.dataset.filter=="Completed"){
+      temp=toDoArr.filter(elem=>elem.completed==true)
+   }
+   else if(event.target.dataset.filter=="NotCompleted"){
+      temp=toDoArr.filter(elem=>elem.completed==false)
+   }
+   else if(event.target.dataset.filter=="All"){
        temp = toDoArr;
    }
    temp.forEach(ele=>{
@@ -136,20 +158,7 @@ function filterTask(event)
    })
    
 }
-// --------------------------------------------COMPLETED TASK--------------------------------------------------
 
-function completList(event){
-console.log(event.target.parentNode.firstElementChild);
-let a=event.target.parentNode.firstElementChild;
-a.classList.toggle("checked");
-toDoArr.forEach((ele)=>{
-   if(parseInt(event.path[2].id)==ele.id){
-      ele.completed=true;
-   }
-})
-console.log(toDoArr);
-
-}
 //---------------------------------------------------ADD EVENT LISTNERS-------------------------------------------
 
 addButton.addEventListener("click",addTask);
