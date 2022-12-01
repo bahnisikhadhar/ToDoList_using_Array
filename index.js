@@ -122,9 +122,10 @@ reset();
 // --------------------------------------------COMPLETED TASK--------------------------------------------------
 
 function completList(event){
-   // console.log(event.target.parentNode.firstElementChild);
-   let a=event.target.parentNode.firstElementChild;
-   a.classList.toggle("checked");
+   
+   // let a=event.target.parentNode.firstElementChild;
+   // a.classList.toggle("checked");
+   event.path[1].firstChild.classList.add("checked")
 
    toDoArr.forEach((ele)=>{
     if(parseInt(event.path[2].id)==ele.id){
@@ -143,7 +144,7 @@ function filterTask(event)
    outputList.innerHTML = "";
    let temp;
    if(event.target.dataset.filter=="High" || event.target.dataset.filter=="Moderate" || event.target.dataset.filter=="Low"){
-       temp = toDoArr.filter(elem => elem.priority == event.target.dataset.filter)
+       temp = toDoArr.filter(elem => elem.priority == event.target.dataset.filter && elem.completed==false)
    }else if(event.target.dataset.filter=="Completed"){
       temp=toDoArr.filter(elem=>elem.completed==true)
    }
