@@ -5,11 +5,17 @@ const addButton=document.querySelector(".add_btn");
 const error=document.querySelector(".error");
 const filterButtons=document.querySelector(".filter_buttons");
 const outputList=document.querySelector(".output_list")
-// let toDoArr=JSON.parse(localStorage.getItem("todo"))||[];
-toDoArr=[];
+let toDoArr=JSON.parse(localStorage.getItem("todo"))||[];
+// toDoArr=[];
 let count=0;
 let completed=false;
 let listSpan;
+
+//--------------------------------------DISPLAY FROM LOCAL STORAGE EVEN AFTER REFRESHING--------------------------------
+
+toDoArr.map((ele)=>{
+   createListElement(ele);
+})
 //----------------------------------------TO RESET INPUT AND ERROR FIELD---------------------------------
 
 function reset()
@@ -61,6 +67,7 @@ else
       completed:false
    };
    toDoArr.push(toDoObj);
+   localStorage.setItem("todo",JSON.stringify(toDoArr));
    createListElement(toDoObj);
    reset();
 }
@@ -80,7 +87,7 @@ toDoArr.forEach((ele,index)=>{
       toDoArr.splice(index,1);
    }
 })
-
+localStorage.setItem("todo",JSON.stringify(toDoArr));
 }
 //-------------------------------------------TO EDIT--------------------------------------------------------------
 
@@ -116,7 +123,7 @@ toDoArr.forEach((ele,index)=>{
       console.log(ele)
    }
 })
-
+localStorage.setItem("todo",JSON.stringify(toDoArr));
 reset();
 }
 // --------------------------------------------COMPLETED TASK--------------------------------------------------
@@ -134,7 +141,7 @@ function completList(event){
       }
    })
    console.log(toDoArr);
-   
+   localStorage.setItem("todo",JSON.stringify(toDoArr));
    }
 //--------------------------------------------FILTER TASK--------------------------------------------------------
 
